@@ -1,0 +1,73 @@
+{
+  "name": "dagscout",
+  "displayName": "DagScout",
+  "description": "Visualize Airflow, dbt, Prefect, and GitHub Actions pipelines as interactive DAG graphs directly in VS Code",
+  "version": "0.1.0",
+  "publisher": "Tom-Fynes",
+  "engines": {
+    "vscode": "^1.106.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tom-Fynes/DagScout"
+  },
+  "categories": [
+    "Visualization"
+  ],
+  "keywords": [
+    "dag",
+    "airflow",
+    "dbt",
+    "pipeline",
+    "etl",
+    "workflow",
+    "data lineage",
+    "graph"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:dagscout.openGraph"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dagscout.openGraph",
+        "title": "DagScout: Open Pipeline Graph"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "typescript-eslint": "^7.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.106.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.27.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "glob": "^8.1.0",
+    "js-yaml": "^4.1.0"
+  }
+}
